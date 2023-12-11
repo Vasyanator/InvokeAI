@@ -3,10 +3,9 @@ import { themes } from '@storybook/theming';
 import i18n from 'i18next';
 import React from 'react';
 import { initReactI18next } from 'react-i18next';
-import { Provider } from 'react-redux';
-import GlobalHotkeys from '../src/app/components/GlobalHotkeys';
-import ThemeLocaleProvider from '../src/app/components/ThemeLocaleProvider';
+import ThemeLocaleProvider from '../src/app/components/ThemeLocaleProvider2';
 import { createStore } from '../src/app/store/store';
+import { useGlobalModifierHotkeysInit } from '../src/common/hooks/useGlobalModifierHotkeys';
 // TODO: Disabled for IDE performance issues with our translation JSON
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -28,14 +27,14 @@ const store = createStore(undefined, false);
 
 const preview: Preview = {
   decorators: [
-    (Story) => (
-      <Provider store={store}>
+    (Story) => {
+      useGlobalModifierHotkeysInit();
+      return (
         <ThemeLocaleProvider>
-          <GlobalHotkeys />
           <Story />
         </ThemeLocaleProvider>
-      </Provider>
-    ),
+      );
+    },
   ],
   parameters: {
     docs: {

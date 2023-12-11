@@ -12,12 +12,15 @@ import {
   SliderTrack,
   Tooltip,
 } from '@chakra-ui/react';
-import { useAppDispatch, useAppSelector } from 'app/store/storeHooks';
+import { useStore } from '@nanostores/react';
 import IAIIconButton from 'common/components/IAIIconButton';
 import IAISliderMarks from 'common/components/IAISlider2/IAISliderMarks';
 import { IAISliderProps } from 'common/components/IAISlider2/types';
+import {
+  $modifierHotkeys,
+  useGlobalModifierHotkeysSetters,
+} from 'common/hooks/useGlobalModifierHotkeys';
 import { roundDownToMultiple } from 'common/util/roundDownToMultiple';
-import { shiftKeyPressed } from 'features/ui/store/hotkeysSlice';
 import { AnimatePresence } from 'framer-motion';
 import { clamp } from 'lodash-es';
 import {
@@ -54,14 +57,13 @@ const IAISlider = (props: IAISliderProps) => {
     formLabelProps,
     numberInputProps,
   } = props;
-  const dispatch = useAppDispatch();
   const { t } = useTranslation();
-  const shift = useAppSelector((state) => state.hotkeys.shift);
   const [isMouseOverSlider, setIsMouseOverSlider] = useState(false);
   const [isChanging, setIsChanging] = useState(false);
   const [inputValue, setInputValue] = useState<string | number | undefined>(
     String(value)
   );
+  const modifiers = useStore($modifierHotkeys);
 
   const isInteger = useMemo(
     () => Number.isInteger(_step) && Number.isInteger(_fineStep),
@@ -104,22 +106,13 @@ const IAISlider = (props: IAISliderProps) => {
     }
   }, []);
 
-  const inputOnKeyDown = useCallback(
-    (e: KeyboardEvent<HTMLInputElement>) => {
-      if (e.shiftKey) {
-        dispatch(shiftKeyPressed(true));
-      }
-    },
-    [dispatch]
-  );
+  const { setShift } = useGlobalModifierHotkeysSetters();
 
-  const inputOnKeyUp = useCallback(
+  const onKeyUpDown = useCallback(
     (e: KeyboardEvent<HTMLInputElement>) => {
-      if (!e.shiftKey) {
-        dispatch(shiftKeyPressed(false));
-      }
+      setShift(e.shiftKey);
     },
-    [dispatch]
+    [setShift]
   );
 
   const stepperOnClick = useCallback(
@@ -128,8 +121,8 @@ const IAISlider = (props: IAISliderProps) => {
   );
 
   const step = useMemo(
-    () => (shift ? _fineStep ?? _step : _step),
-    [_step, _fineStep, shift]
+    () => (modifiers.shift ? _fineStep ?? _step : _step),
+    [modifiers.shift, _fineStep, _step]
   );
 
   const tooltip = useMemo(() => formatValue(value), [formatValue, value]);
@@ -203,7 +196,7 @@ const IAISlider = (props: IAISliderProps) => {
           focusInputOnChange={false}
           {...numberInputProps}
         >
-          <NumberInputField onKeyDown={inputOnKeyDown} onKeyUp={inputOnKeyUp} />
+          <NumberInputField onKeyUp={onKeyUpDown} onKeyDown={onKeyUpDown} />
           <NumberInputStepper>
             <NumberIncrementStepper onClick={stepperOnClick} />
             <NumberDecrementStepper onClick={stepperOnClick} />
