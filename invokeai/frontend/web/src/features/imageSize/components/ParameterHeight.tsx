@@ -1,7 +1,7 @@
 import { createMemoizedSelector } from 'app/store/createMemoizedSelector';
 import { stateSelector } from 'app/store/store';
 import { useAppDispatch, useAppSelector } from 'app/store/storeHooks';
-import IAISlider2 from 'common/components/IAISlider/IAISlider2';
+import IAISlider from 'common/components/IAISlider2/IAISlider';
 import { heightChanged } from 'features/imageSize/store/imageSizeSlice';
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -49,7 +49,7 @@ const ParameterHeight = () => {
   }, [dispatch, initial]);
 
   return (
-    <IAISlider2
+    <IAISlider
       label={t('parameters.height')}
       value={height}
       onChange={onChange}
@@ -58,9 +58,7 @@ const ParameterHeight = () => {
       max={max}
       step={step}
       fineStep={fineStep}
-      isInteger
       withInput
-      hideTooltip
       inputMax={inputMax}
       marks={[min, initial, max]}
       numberInputProps={{ w: 36 }}
