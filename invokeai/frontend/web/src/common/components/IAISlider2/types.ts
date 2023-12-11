@@ -66,15 +66,15 @@ export type IAISliderProps = {
    */
   withTooltip?: boolean;
   /**
-   * Props for the <FormControl /> (optional)
+   * Props for the FormControl (optional)
    */
   formControlProps?: FormControlProps;
   /**
-   * Props for the <FormLabel /> (optional)
+   * Props for the FormLabel (optional)
    */
   formLabelProps?: FormLabelProps;
   /**
-   * Props for the <NumberInput /> (optional)
+   * Props for the NumberInput (optional)
    */
   numberInputProps?: NumberInputProps;
 };
