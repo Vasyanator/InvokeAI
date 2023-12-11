@@ -4,30 +4,41 @@ import { createMultiStyleConfigHelpers, defineStyle } from '@chakra-ui/react';
 const { definePartsStyle, defineMultiStyleConfig } =
   createMultiStyleConfigHelpers(parts.keys);
 
-const invokeAITrack = defineStyle(() => {
+const track = defineStyle(() => {
   return {
     bg: 'base.600',
-    h: 1.5,
+    h: 2,
   };
 });
 
-const invokeAIFilledTrack = defineStyle((props) => {
+const filledTrack = defineStyle((props) => {
   const { colorScheme: c } = props;
   return {
     bg: `${c}.600`,
-    h: 1.5,
+    h: 2,
   };
 });
 
-const invokeAIThumb = defineStyle((props) => {
+const thumb = defineStyle(() => {
   return {
-    w: props.orientation === 'horizontal' ? 2 : 4,
-    h: props.orientation === 'horizontal' ? 4 : 2,
-    bg: 'base.100',
+    w: 4,
+    h: 4,
+    bg: 'accent.400',
+    borderRadius: 'full',
+    borderColor: 'base.200',
+    borderWidth: 3,
+    _hover: {
+      transform: `translateY(-50%) scale(1.15)`,
+      transition: 'transform 0.1s',
+      _active: {
+        transform: `translateY(-50%) scale(1.22)`,
+        transition: 'transform 0.05s',
+      },
+    },
   };
 });
 
-const invokeAIMark = defineStyle(() => {
+const mark = defineStyle(() => {
   return {
     fontSize: '2xs',
     fontWeight: '500',
@@ -37,7 +48,7 @@ const invokeAIMark = defineStyle(() => {
   };
 });
 
-const invokeAI = definePartsStyle((props) => ({
+const baseStyle = definePartsStyle((props) => ({
   container: {
     _disabled: {
       opacity: 0.6,
@@ -45,16 +56,15 @@ const invokeAI = definePartsStyle((props) => ({
       pointerEvents: 'none',
     },
   },
-  track: invokeAITrack(),
-  filledTrack: invokeAIFilledTrack(props),
-  thumb: invokeAIThumb(props),
-  mark: invokeAIMark(),
+  track: track(),
+  filledTrack: filledTrack(props),
+  thumb: thumb(),
+  mark: mark(),
 }));
 
 export const sliderTheme = defineMultiStyleConfig({
-  variants: { invokeAI },
+  baseStyle,
   defaultProps: {
-    variant: 'invokeAI',
     colorScheme: 'accent',
   },
 });

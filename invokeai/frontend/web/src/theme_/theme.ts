@@ -22,6 +22,7 @@ import { textTheme } from './components/text';
 import { textareaTheme } from './components/textarea';
 import { tooltipTheme } from './components/tooltip';
 import { reactflowStyles } from './custom/reactflow';
+import { formTheme } from 'theme_/components/form';
 
 export const theme: ThemeOverride = {
   config: {
@@ -90,6 +91,7 @@ export const theme: ThemeOverride = {
     Text: textTheme,
     Tooltip: tooltipTheme,
     Heading: headingTheme,
+    Form: formTheme,
   },
 };
 

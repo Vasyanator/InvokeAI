@@ -1,6 +1,6 @@
 import { defineStyle, defineStyleConfig } from '@chakra-ui/styled-system';
 
-const invokeAI = defineStyle(() => {
+const baseStyle = defineStyle(() => {
   return {
     fontSize: 'sm',
     marginEnd: 0,
@@ -20,10 +20,5 @@ const invokeAI = defineStyle(() => {
 });
 
 export const formLabelTheme = defineStyleConfig({
-  variants: {
-    invokeAI,
-  },
-  defaultProps: {
-    variant: 'invokeAI',
-  },
+  baseStyle,
 });

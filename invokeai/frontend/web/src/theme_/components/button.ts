@@ -1,6 +1,6 @@
 import { defineStyle, defineStyleConfig } from '@chakra-ui/react';
 
-const invokeAI = defineStyle((props) => {
+const baseStyle = defineStyle((props) => {
   const { colorScheme: c } = props;
   // must specify `_disabled` colors if we override `_hover`, else hover on disabled has no styles
 
@@ -73,37 +73,9 @@ const invokeAI = defineStyle((props) => {
   };
 });
 
-const invokeAIOutline = defineStyle((props) => {
-  const { colorScheme: c } = props;
-  const borderColor = 'whiteAlpha.300';
-  return {
-    border: '1px solid',
-    borderColor: c === 'gray' ? borderColor : 'currentColor',
-    _hover: {
-      bg: `${c}.500`,
-      color: 'base.50',
-      svg: {
-        fill: `base.50`,
-      },
-    },
-    '.chakra-button__group[data-attached][data-orientation=horizontal] > &:not(:last-of-type)':
-      {
-        marginEnd: '-1px',
-      },
-    '.chakra-button__group[data-attached][data-orientation=vertical] > &:not(:last-of-type)':
-      {
-        marginBottom: '-1px',
-      },
-  };
-});
-
 export const buttonTheme = defineStyleConfig({
-  variants: {
-    invokeAI,
-    invokeAIOutline,
-  },
+  baseStyle,
   defaultProps: {
-    variant: 'invokeAI',
     colorScheme: 'base',
   },
 });
