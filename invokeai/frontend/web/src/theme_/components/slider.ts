@@ -44,7 +44,6 @@ const mark = defineStyle(() => {
     fontWeight: '500',
     color: 'base.400',
     mt: 2,
-    insetInlineStart: 'unset',
   };
 });
 

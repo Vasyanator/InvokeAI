@@ -17,11 +17,10 @@ import IAIIconButton from 'common/components/IAIIconButton';
 import IAISliderMarks from 'common/components/IAISlider2/IAISliderMarks';
 import { IAISliderProps } from 'common/components/IAISlider2/types';
 import {
-  $modifierHotkeys,
-  useGlobalModifierHotkeysSetters,
-} from 'common/hooks/useGlobalModifierHotkeys';
+  $modifiers,
+  useGlobalModifiersSetters,
+} from 'common/hooks/useGlobalModifiers';
 import { roundDownToMultiple } from 'common/util/roundDownToMultiple';
-import { AnimatePresence } from 'framer-motion';
 import { clamp } from 'lodash-es';
 import {
   FocusEvent,
@@ -63,7 +62,7 @@ const IAISlider = (props: IAISliderProps) => {
   const [inputValue, setInputValue] = useState<string | number | undefined>(
     String(value)
   );
-  const modifiers = useStore($modifierHotkeys);
+  const modifiers = useStore($modifiers);
 
   const isInteger = useMemo(
     () => Number.isInteger(_step) && Number.isInteger(_fineStep),
@@ -106,7 +105,7 @@ const IAISlider = (props: IAISliderProps) => {
     }
   }, []);
 
-  const { setShift } = useGlobalModifierHotkeysSetters();
+  const { setShift } = useGlobalModifiersSetters();
 
   const onKeyUpDown = useCallback(
     (e: KeyboardEvent<HTMLInputElement>) => {
@@ -165,11 +164,11 @@ const IAISlider = (props: IAISliderProps) => {
         onChangeStart={onChangeStart}
         onChangeEnd={onChangeEnd}
       >
-        <AnimatePresence>
-          {marks?.length && (isMouseOverSlider || isChanging) && (
-            <IAISliderMarks marks={marks} formatValue={formatValue} />
-          )}
-        </AnimatePresence>
+        {/* <AnimatePresence>
+          {marks?.length && (isMouseOverSlider || isChanging) && ( */}
+        <IAISliderMarks marks={marks ?? []} formatValue={formatValue} />
+        {/* )}
+        </AnimatePresence> */}
 
         <SliderTrack>
           <SliderFilledTrack />

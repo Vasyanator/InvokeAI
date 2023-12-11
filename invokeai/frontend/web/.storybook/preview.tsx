@@ -5,7 +5,7 @@ import React from 'react';
 import { initReactI18next } from 'react-i18next';
 import ThemeLocaleProvider from '../src/app/components/ThemeLocaleProvider2';
 import { createStore } from '../src/app/store/store';
-import { useGlobalModifierHotkeysInit } from '../src/common/hooks/useGlobalModifierHotkeys';
+import { useGlobalModifiersInit } from '../src/common/hooks/useGlobalModifiers';
 // TODO: Disabled for IDE performance issues with our translation JSON
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -28,7 +28,7 @@ const store = createStore(undefined, false);
 const preview: Preview = {
   decorators: [
     (Story) => {
-      useGlobalModifierHotkeysInit();
+      useGlobalModifiersInit();
       return (
         <ThemeLocaleProvider>
           <Story />

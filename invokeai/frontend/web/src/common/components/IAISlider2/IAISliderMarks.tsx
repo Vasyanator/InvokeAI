@@ -53,50 +53,25 @@ const IAISliderMarks = ({
   }, [_marks, formatValue]);
   return (
     <>
-      {marks.map((m, i) => {
-        if (i === 0) {
-          return (
-            <SliderMark
-              as={motion.div}
-              initial={initial}
-              animate={animate}
-              exit={exit}
-              key={m.value}
-              value={m.value}
-              sx={firstMarkStyle}
-            >
-              {m.label}
-            </SliderMark>
-          );
-        } else if (i === marks.length - 1) {
-          return (
-            <SliderMark
-              as={motion.div}
-              initial={initial}
-              animate={animate}
-              exit={exit}
-              key={m.value}
-              value={m.value}
-              sx={lastMarkStyle}
-            >
-              {m.label}
-            </SliderMark>
-          );
-        } else {
-          return (
-            <SliderMark
-              as={motion.div}
-              initial={initialOther}
-              animate={animateOther}
-              exit={exitOther}
-              key={m.value}
-              value={m.value}
-            >
-              {m.label}
-            </SliderMark>
-          );
-        }
-      })}
+      {marks.map((m, i) => (
+        <SliderMark
+          as={motion.div}
+          initial={initial}
+          animate={animate}
+          exit={exit}
+          key={m.value}
+          value={m.value}
+          sx={
+            i === 0
+              ? firstMarkStyle
+              : i === marks.length - 1
+                ? lastMarkStyle
+                : undefined
+          }
+        >
+          {m.label}
+        </SliderMark>
+      ))}
     </>
   );
 };
