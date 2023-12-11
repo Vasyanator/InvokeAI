@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Slider from 'common/components/Slider';
+import Slider from 'common/components/Slider/Slider';
 import { useCallback, useState } from 'react';
 
 const meta: Meta<typeof Slider> = {

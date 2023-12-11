@@ -5,9 +5,9 @@ import {
   SliderTrack as ChakraSliderTrack,
 } from '@chakra-ui/react';
 import { useStore } from '@nanostores/react';
-import SliderMarks from 'common/components/Slider/SliderMarks';
-import { SliderProps } from 'common/components/Slider/types';
-import Tooltip from 'common/components/Tooltip';
+import SliderMark from 'common/components/Slider/SliderMark';
+import { FormattedMark, SliderProps } from 'common/components/Slider/types';
+import { Tooltip } from 'common/components/Tooltip';
 import { $modifiers } from 'common/hooks/useGlobalModifiers';
 import { AnimatePresence } from 'framer-motion';
 import { memo, useCallback, useMemo, useState } from 'react';
@@ -22,25 +22,32 @@ const Slider = (props: SliderProps) => {
     onChange,
     onReset,
     formatValue = (v: number) => v.toString(),
-    marks,
+    marks: _marks,
     inputMin: _inputMin,
     inputMax: _inputMax,
     isDisabled = false,
     withTooltip = false,
   } = props;
-  const modifiers = useStore($modifiers);
   const [isMouseOverSlider, setIsMouseOverSlider] = useState(false);
   const [isChanging, setIsChanging] = useState(false);
+
+  const modifiers = useStore($modifiers);
   const step = useMemo(
     () => (modifiers.shift ? _fineStep ?? _step : _step),
     [modifiers.shift, _fineStep, _step]
   );
+
   const label = useMemo(() => formatValue(value), [formatValue, value]);
+
   const onMouseEnter = useCallback(() => setIsMouseOverSlider(true), []);
   const onMouseLeave = useCallback(() => setIsMouseOverSlider(false), []);
   const onChangeStart = useCallback(() => setIsChanging(true), []);
   const onChangeEnd = useCallback(() => setIsChanging(false), []);
 
+  const marks = useMemo<FormattedMark[]>(
+    () => _marks?.map((m) => ({ value: m, label: formatValue(m) })) ?? [],
+    [_marks, formatValue]
+  );
   return (
     <ChakraSlider
       value={value}
@@ -56,9 +63,17 @@ const Slider = (props: SliderProps) => {
       onChangeEnd={onChangeEnd}
     >
       <AnimatePresence>
-        {marks?.length && (isMouseOverSlider || isChanging) && (
-          <SliderMarks marks={marks} formatValue={formatValue} />
-        )}
+        {marks?.length &&
+          (isMouseOverSlider || isChanging) &&
+          marks.map((m, i) => (
+            <SliderMark
+              key={m.value}
+              value={m.value}
+              label={m.label}
+              index={i}
+              total={marks.length}
+            />
+          ))}
       </AnimatePresence>
 
       <ChakraSliderTrack>

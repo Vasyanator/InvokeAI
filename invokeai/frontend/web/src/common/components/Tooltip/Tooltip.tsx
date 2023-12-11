@@ -1,10 +1,6 @@
-import {
-  Tooltip as ChakraTooltip,
-  TooltipProps as ChakraTooltipProps,
-} from '@chakra-ui/react';
+import { Tooltip as ChakraTooltip } from '@chakra-ui/react';
+import { TooltipProps } from 'common/components/Tooltip/types';
 import { memo } from 'react';
-
-type TooltipProps = ChakraTooltipProps;
 
 const Tooltip = (props: TooltipProps) => {
   const { children, hasArrow = true, placement = 'top', ...rest } = props;

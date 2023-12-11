@@ -52,3 +52,5 @@ export type SliderProps = {
    */
   withTooltip?: boolean;
 };
+
+export type FormattedMark = { value: number; label: string };

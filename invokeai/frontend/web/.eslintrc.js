@@ -33,7 +33,7 @@ module.exports = {
   rules: {
     'path/no-relative-imports': ['error', { maxDepth: 0 }],
     curly: 'error',
-    'i18next/no-literal-string': 2,
+    'i18next/no-literal-string': 'warn',
     'react/jsx-no-bind': ['error', { allowBind: true }],
     'react/jsx-curly-brace-presence': [
       'error',
@@ -66,6 +66,14 @@ module.exports = {
       },
     ],
   },
+  overrides: [
+    {
+      files: ['*.stories.tsx'],
+      rules: {
+        'i18next/no-literal-string': 'off',
+      },
+    },
+  ],
   settings: {
     react: {
       version: 'detect',

@@ -1,5 +1,6 @@
 import { ThemeOverride, ToastProviderProps } from '@chakra-ui/react';
 import { headingTheme } from 'theme/components/heading';
+import { formTheme } from 'theme_/components/form';
 import { InvokeAIColors } from './colors/colors';
 import { accordionTheme } from './components/accordion';
 import { buttonTheme } from './components/button';
@@ -22,7 +23,6 @@ import { textTheme } from './components/text';
 import { textareaTheme } from './components/textarea';
 import { tooltipTheme } from './components/tooltip';
 import { reactflowStyles } from './custom/reactflow';
-import { formTheme } from 'theme_/components/form';
 
 export const theme: ThemeOverride = {
   config: {
