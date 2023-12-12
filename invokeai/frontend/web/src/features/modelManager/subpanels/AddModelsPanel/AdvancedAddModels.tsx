@@ -41,7 +41,10 @@ export default function AdvancedAddModels() {
         sx={{
           p: 4,
           borderRadius: 4,
-          bg: 'base.850',
+          bg: 'base.300',
+          _dark: {
+            bg: 'base.850',
+          },
         }}
       >
         {advancedAddMode === 'diffusers' && <AdvancedAddDiffusers />}

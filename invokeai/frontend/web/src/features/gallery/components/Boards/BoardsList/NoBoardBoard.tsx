@@ -97,7 +97,10 @@ const NoBoardBoard = memo(({ isSelected }: Props) => {
                   alignItems: 'center',
                   borderRadius: 'base',
                   cursor: 'pointer',
-                  bg: 'base.800',
+                  bg: 'base.200',
+                  _dark: {
+                    bg: 'base.800',
+                  },
                 }}
               >
                 <Flex
@@ -135,8 +138,12 @@ const NoBoardBoard = memo(({ isSelected }: Props) => {
                     w: 'full',
                     maxW: 'full',
                     borderBottomRadius: 'base',
-                    bg: isSelected ? 'accent.500' : 'base.600',
+                    bg: isSelected ? 'accent.400' : 'base.500',
                     color: isSelected ? 'base.50' : 'base.100',
+                    _dark: {
+                      bg: isSelected ? 'accent.500' : 'base.600',
+                      color: isSelected ? 'base.50' : 'base.100',
+                    },
                     lineHeight: 'short',
                     fontSize: 'xs',
                     fontWeight: isSelected ? 700 : 500,

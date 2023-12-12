@@ -294,7 +294,8 @@ const InputFieldRenderer = ({ nodeId, fieldName }: InputFieldProps) => {
         sx={{
           fontSize: 'sm',
           fontWeight: 600,
-          color: 'error.300',
+          color: 'error.400',
+          _dark: { color: 'error.300' },
         }}
       >
         {t('nodes.unknownFieldType', { type: fieldInstance?.type.name })}

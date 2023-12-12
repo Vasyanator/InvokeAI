@@ -3,6 +3,7 @@ import {
   createMultiStyleConfigHelpers,
   defineStyle,
 } from '@chakra-ui/styled-system';
+import { mode } from '@chakra-ui/theme-tools';
 
 const { definePartsStyle, defineMultiStyleConfig } =
   createMultiStyleConfigHelpers(parts.keys);
@@ -11,18 +12,18 @@ const invokeAIControl = defineStyle((props) => {
   const { colorScheme: c } = props;
 
   return {
-    bg: 'base.700',
-    borderColor: 'base.600',
-    color: 'base.100',
+    bg: mode('base.200', 'base.700')(props),
+    borderColor: mode('base.300', 'base.600')(props),
+    color: mode('base.900', 'base.100')(props),
 
     _checked: {
-      bg: `${c}.500`,
-      borderColor: `${c}.500`,
-      color: `${c}.100`,
+      bg: mode(`${c}.300`, `${c}.500`)(props),
+      borderColor: mode(`${c}.300`, `${c}.500`)(props),
+      color: mode(`${c}.900`, `${c}.100`)(props),
 
       _hover: {
-        bg: `${c}.500`,
-        borderColor: `${c}.500`,
+        bg: mode(`${c}.400`, `${c}.500`)(props),
+        borderColor: mode(`${c}.400`, `${c}.500`)(props),
       },
 
       _disabled: {
@@ -33,9 +34,9 @@ const invokeAIControl = defineStyle((props) => {
     },
 
     _indeterminate: {
-      bg: `${c}.600`,
-      borderColor: `${c}.600`,
-      color: `${c}.100`,
+      bg: mode(`${c}.300`, `${c}.600`)(props),
+      borderColor: mode(`${c}.300`, `${c}.600`)(props),
+      color: mode(`${c}.900`, `${c}.100`)(props),
     },
 
     _disabled: {
@@ -49,7 +50,7 @@ const invokeAIControl = defineStyle((props) => {
     },
 
     _invalid: {
-      borderColor: 'error.300',
+      borderColor: mode('error.600', 'error.300')(props),
     },
   };
 });

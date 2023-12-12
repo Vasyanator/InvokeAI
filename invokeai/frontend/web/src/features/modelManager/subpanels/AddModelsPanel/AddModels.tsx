@@ -43,7 +43,8 @@ export default function AddModels() {
         sx={{
           p: 4,
           borderRadius: 4,
-          background: 'base.800',
+          background: 'base.200',
+          _dark: { background: 'base.800' },
         }}
       >
         {addModelMode === 'simple' && <SimpleAddModels />}

@@ -17,7 +17,10 @@ const IAICanvasGrid = () => {
     useAppSelector(selector);
   const { colorMode } = useColorMode();
   const [gridLines, setGridLines] = useState<ReactNode[]>([]);
-  const [gridLineColor] = useToken('colors', ['base.800']);
+  const [darkGridLineColor, lightGridLineColor] = useToken('colors', [
+    'base.800',
+    'base.200',
+  ]);
 
   const unscale = useCallback(
     (value: number) => {
@@ -75,7 +78,7 @@ const IAICanvasGrid = () => {
         x={fullRect.x1 + i * 64}
         y={fullRect.y1}
         points={[0, 0, 0, ySize]}
-        stroke={gridLineColor}
+        stroke={colorMode === 'dark' ? darkGridLineColor : lightGridLineColor}
         strokeWidth={1}
       />
     ));
@@ -85,7 +88,7 @@ const IAICanvasGrid = () => {
         x={fullRect.x1}
         y={fullRect.y1 + i * 64}
         points={[0, 0, xSize, 0]}
-        stroke={gridLineColor}
+        stroke={colorMode === 'dark' ? darkGridLineColor : lightGridLineColor}
         strokeWidth={1}
       />
     ));
@@ -97,7 +100,8 @@ const IAICanvasGrid = () => {
     stageDimensions,
     unscale,
     colorMode,
-    gridLineColor,
+    darkGridLineColor,
+    lightGridLineColor,
   ]);
 
   return <Group>{gridLines}</Group>;

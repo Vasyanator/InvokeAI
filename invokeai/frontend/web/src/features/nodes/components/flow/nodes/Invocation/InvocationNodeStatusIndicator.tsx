@@ -136,7 +136,8 @@ const StatusIcon = memo((props: StatusIconProps) => {
         as={FaEllipsisH}
         sx={{
           boxSize: iconBoxSize,
-          color: 'base.300',
+          color: 'base.600',
+          _dark: { color: 'base.300' },
         }}
       />
     );
@@ -166,7 +167,8 @@ const StatusIcon = memo((props: StatusIconProps) => {
         as={FaCheck}
         sx={{
           boxSize: iconBoxSize,
-          color: 'ok.300',
+          color: 'ok.600',
+          _dark: { color: 'ok.300' },
         }}
       />
     );
@@ -177,7 +179,8 @@ const StatusIcon = memo((props: StatusIconProps) => {
         as={FaExclamation}
         sx={{
           boxSize: iconBoxSize,
-          color: 'error.300',
+          color: 'error.600',
+          _dark: { color: 'error.300' },
         }}
       />
     );

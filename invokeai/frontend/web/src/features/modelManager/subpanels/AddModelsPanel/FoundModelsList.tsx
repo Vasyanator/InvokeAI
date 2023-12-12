@@ -112,7 +112,10 @@ export default function FoundModelsList() {
             gap: 4,
             alignItems: 'center',
             borderRadius: 4,
-            bg: 'base.800',
+            bg: 'base.200',
+            _dark: {
+              bg: 'base.800',
+            },
           }}
           key={model}
         >
@@ -123,7 +126,10 @@ export default function FoundModelsList() {
             <Text
               sx={{
                 fontSize: 'sm',
-                color: 'base.400',
+                color: 'base.600',
+                _dark: {
+                  color: 'base.400',
+                },
               }}
             >
               {model}
@@ -151,8 +157,12 @@ export default function FoundModelsList() {
                 fontWeight: 600,
                 p: 2,
                 borderRadius: 4,
-                color: 'accent.100',
-                bg: 'accent.600',
+                color: 'accent.50',
+                bg: 'accent.400',
+                _dark: {
+                  color: 'accent.100',
+                  bg: 'accent.600',
+                },
               }}
             >
               {t('common.installed')}
@@ -178,7 +188,10 @@ export default function FoundModelsList() {
             alignItems: 'center',
             height: 96,
             userSelect: 'none',
-            bg: 'base.900',
+            bg: 'base.200',
+            _dark: {
+              bg: 'base.900',
+            },
           }}
         >
           <Text variant="subtext">{t('modelManager.noModels')}</Text>
@@ -207,7 +220,10 @@ export default function FoundModelsList() {
           <Text
             sx={{
               fontWeight: 600,
-              color: 'accent.200',
+              color: 'accent.500',
+              _dark: {
+                color: 'accent.200',
+              },
             }}
           >
             {t('common.notInstalled')}: {filteredModels.length}

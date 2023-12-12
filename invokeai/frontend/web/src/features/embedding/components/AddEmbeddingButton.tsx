@@ -20,10 +20,19 @@ const AddEmbeddingButton = (props: Props) => {
         p: 2,
         color: 'base.500',
         _hover: {
-          color: 'base.400',
+          color: 'base.600',
         },
         _active: {
-          color: 'base.300',
+          color: 'base.700',
+        },
+        _dark: {
+          color: 'base.500',
+          _hover: {
+            color: 'base.400',
+          },
+          _active: {
+            color: 'base.300',
+          },
         },
       }}
       variant="link"

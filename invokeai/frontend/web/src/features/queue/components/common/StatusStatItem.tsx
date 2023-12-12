@@ -9,7 +9,10 @@ import { memo } from 'react';
 
 const sx: ChakraProps['sx'] = {
   '&[aria-disabled="true"]': {
-    color: 'base.500',
+    color: 'base.400',
+    _dark: {
+      color: 'base.500',
+    },
   },
 };
 

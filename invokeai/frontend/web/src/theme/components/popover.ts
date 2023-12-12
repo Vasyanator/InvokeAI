@@ -14,8 +14,8 @@ const $arrowShadowColor = cssVar('popper-arrow-shadow-color');
 
 const invokeAIContent = defineStyle((props) => {
   return {
-    [$arrowBg.variable]: 'colors.base.800',
-    [$popperBg.variable]: 'colors.base.800',
+    [$arrowBg.variable]: mode('colors.base.100', 'colors.base.800')(props),
+    [$popperBg.variable]: mode('colors.base.100', 'colors.base.800')(props),
     [$arrowShadowColor.variable]: mode(
       'colors.base.400',
       'colors.base.600'
@@ -23,7 +23,7 @@ const invokeAIContent = defineStyle((props) => {
     minW: 'unset',
     width: 'unset',
     p: 4,
-    bg: 'base.800',
+    bg: mode('base.100', 'base.800')(props),
     border: 'none',
     shadow: 'dark-lg',
   };
@@ -31,14 +31,14 @@ const invokeAIContent = defineStyle((props) => {
 
 const informationalContent = defineStyle((props) => {
   return {
-    [$arrowBg.variable]: 'colors.base.700',
-    [$popperBg.variable]: 'colors.base.700',
+    [$arrowBg.variable]: mode('colors.base.100', 'colors.base.700')(props),
+    [$popperBg.variable]: mode('colors.base.100', 'colors.base.700')(props),
     [$arrowShadowColor.variable]: mode(
       'colors.base.400',
       'colors.base.400'
     )(props),
     p: 4,
-    bg: 'base.700',
+    bg: mode('base.100', 'base.700')(props),
     border: 'none',
     shadow: 'dark-lg',
   };

@@ -8,13 +8,25 @@ type Props = {
 const SelectionOverlay = ({ isSelected, isHovered }: Props) => {
   const shadow = useMemo(() => {
     if (isSelected && isHovered) {
-      return 'nodeHoveredSelected';
+      return 'nodeHoveredSelected.light';
     }
     if (isSelected) {
-      return 'nodeSelected';
+      return 'nodeSelected.light';
     }
     if (isHovered) {
-      return 'nodeHovered';
+      return 'nodeHovered.light';
+    }
+    return undefined;
+  }, [isHovered, isSelected]);
+  const shadowDark = useMemo(() => {
+    if (isSelected && isHovered) {
+      return 'nodeHoveredSelected.dark';
+    }
+    if (isSelected) {
+      return 'nodeSelected.dark';
+    }
+    if (isHovered) {
+      return 'nodeHovered.dark';
     }
     return undefined;
   }, [isHovered, isSelected]);
@@ -33,6 +45,9 @@ const SelectionOverlay = ({ isSelected, isHovered }: Props) => {
         transitionDuration: '0.1s',
         pointerEvents: 'none',
         shadow,
+        _dark: {
+          shadow: shadowDark,
+        },
       }}
     />
   );

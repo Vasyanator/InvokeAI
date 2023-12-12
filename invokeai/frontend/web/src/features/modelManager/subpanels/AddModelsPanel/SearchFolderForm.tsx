@@ -71,8 +71,9 @@ function SearchFolderForm() {
             sx={{
               fontSize: 'sm',
               fontWeight: 600,
-              color: 'base.300',
+              color: 'base.700',
               minW: 'max-content',
+              _dark: { color: 'base.300' },
             }}
           >
             {t('common.folder')}
@@ -89,10 +90,11 @@ function SearchFolderForm() {
                 w: '100%',
                 p: 2,
                 px: 4,
-                bg: 'base.700',
+                bg: 'base.300',
                 borderRadius: 4,
                 fontSize: 'sm',
                 fontWeight: 'bold',
+                _dark: { bg: 'base.700' },
               }}
             >
               {searchFolder}

@@ -196,9 +196,10 @@ const AddNodePopover = () => {
           p: 0,
           top: -1,
           shadow: 'dark-lg',
-          borderColor: 'accent.400',
+          borderColor: 'accent.300',
           borderWidth: '2px',
           borderStyle: 'solid',
+          _dark: { borderColor: 'accent.400' },
         }}
       >
         <PopoverBody sx={{ p: 0 }}>

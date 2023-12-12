@@ -68,7 +68,10 @@ const ControlAdapterConfig = (props: { id: string; number: number }) => {
         p: 2,
         borderRadius: 'base',
         position: 'relative',
-        bg: 'base.750',
+        bg: 'base.250',
+        _dark: {
+          bg: 'base.750',
+        },
       }}
     >
       <Flex
@@ -135,10 +138,13 @@ const ControlAdapterConfig = (props: { id: string; number: number }) => {
             <ChevronUpIcon
               sx={{
                 boxSize: 4,
-                color: 'base.300',
+                color: 'base.700',
                 transform: isExpanded ? 'rotate(0deg)' : 'rotate(180deg)',
                 transitionProperty: 'common',
                 transitionDuration: 'normal',
+                _dark: {
+                  color: 'base.300',
+                },
               }}
             />
           }

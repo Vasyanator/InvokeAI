@@ -79,7 +79,10 @@ export default function ScanAdvancedAddModels() {
         p: 4,
         gap: 4,
         borderRadius: 4,
-        bg: 'base.800',
+        bg: 'base.200',
+        _dark: {
+          bg: 'base.800',
+        },
       }}
     >
       <Flex justifyContent="space-between" alignItems="center">

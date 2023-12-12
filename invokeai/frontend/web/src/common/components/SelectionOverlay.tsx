@@ -22,11 +22,20 @@ const SelectionOverlay = ({ isSelected, isHovered }: Props) => {
         pointerEvents: 'none',
         shadow: isSelected
           ? isHovered
-            ? 'hoverSelected'
-            : 'selected'
+            ? 'hoverSelected.light'
+            : 'selected.light'
           : isHovered
-            ? 'hoverUnselected'
+            ? 'hoverUnselected.light'
             : undefined,
+        _dark: {
+          shadow: isSelected
+            ? isHovered
+              ? 'hoverSelected.dark'
+              : 'selected.dark'
+            : isHovered
+              ? 'hoverUnselected.dark'
+              : undefined,
+        },
       }}
     />
   );

@@ -27,7 +27,8 @@ const InvocationNodeHeader = ({ nodeId, isOpen }: Props) => {
         h: 8,
         textAlign: 'center',
         fontWeight: 500,
-        color: 'base.200',
+        color: 'base.700',
+        _dark: { color: 'base.200' },
       }}
     >
       <NodeCollapseButton nodeId={nodeId} isOpen={isOpen} />

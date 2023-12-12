@@ -1,25 +1,26 @@
 import { selectAnatomy as parts } from '@chakra-ui/anatomy';
 import { createMultiStyleConfigHelpers, defineStyle } from '@chakra-ui/react';
 import { getInputOutlineStyles } from 'theme/util/getInputOutlineStyles';
+import { mode } from '@chakra-ui/theme-tools';
 
 const { definePartsStyle, defineMultiStyleConfig } =
   createMultiStyleConfigHelpers(parts.keys);
 
-const invokeAIIcon = defineStyle(() => {
+const invokeAIIcon = defineStyle((props) => {
   return {
-    color: 'base.300',
+    color: mode('base.200', 'base.300')(props),
   };
 });
 
-const invokeAIField = defineStyle(() => ({
+const invokeAIField = defineStyle((props) => ({
   fontWeight: '600',
-  ...getInputOutlineStyles(),
+  ...getInputOutlineStyles(props),
 }));
 
-const invokeAI = definePartsStyle(() => {
+const invokeAI = definePartsStyle((props) => {
   return {
-    field: invokeAIField(),
-    icon: invokeAIIcon(),
+    field: invokeAIField(props),
+    icon: invokeAIIcon(props),
   };
 });
 

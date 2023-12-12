@@ -7,8 +7,14 @@ const invokeAI = defineStyle({
   borderRadius: 'base',
   maxW: 'full',
   maxH: 'full',
-  [$startColor.variable]: 'colors.base.700',
-  [$endColor.variable]: 'colors.base.500',
+  _light: {
+    [$startColor.variable]: 'colors.base.250',
+    [$endColor.variable]: 'colors.base.450',
+  },
+  _dark: {
+    [$startColor.variable]: 'colors.base.700',
+    [$endColor.variable]: 'colors.base.500',
+  },
 });
 
 export const skeletonTheme = defineStyleConfig({

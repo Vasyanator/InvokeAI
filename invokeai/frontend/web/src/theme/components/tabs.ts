@@ -8,14 +8,14 @@ import { mode } from '@chakra-ui/theme-tools';
 const { defineMultiStyleConfig, definePartsStyle } =
   createMultiStyleConfigHelpers(parts.keys);
 
-const appTabsRoot = defineStyle(() => {
+const appTabsRoot = defineStyle((_props) => {
   return {
     display: 'flex',
     columnGap: 4,
   };
 });
 
-const appTabsTab = defineStyle(() => ({}));
+const appTabsTab = defineStyle((_props) => ({}));
 
 const appTabsTablist = defineStyle((props) => {
   const { colorScheme: c } = props;
@@ -24,7 +24,7 @@ const appTabsTablist = defineStyle((props) => {
     display: 'flex',
     flexDirection: 'column',
     gap: 1,
-    color: 'base.400',
+    color: mode('base.700', 'base.400')(props),
     button: {
       fontSize: 'sm',
       padding: 2,
@@ -34,59 +34,59 @@ const appTabsTablist = defineStyle((props) => {
         `0 0 0.3rem var(--invokeai-colors-accent-900)`
       )(props),
       svg: {
-        fill: 'base.300',
+        fill: mode('base.700', 'base.300')(props),
       },
       _selected: {
-        bg: 'accent.600',
-        color: 'base.100',
+        bg: mode('accent.400', 'accent.600')(props),
+        color: mode('base.50', 'base.100')(props),
         svg: {
-          fill: `base.100`,
+          fill: mode(`base.50`, `base.100`)(props),
           filter: mode(
             `drop-shadow(0px 0px 0.3rem var(--invokeai-colors-${c}-600))`,
             `drop-shadow(0px 0px 0.3rem var(--invokeai-colors-${c}-800))`
           )(props),
         },
         _hover: {
-          bg: 'accent.500',
-          color: 'base.50',
+          bg: mode('accent.500', 'accent.500')(props),
+          color: mode('white', 'base.50')(props),
           svg: {
-            fill: 'base.50',
+            fill: mode('white', 'base.50')(props),
           },
         },
       },
       _hover: {
-        bg: 'base.800',
-        color: 'base.50',
+        bg: mode('base.100', 'base.800')(props),
+        color: mode('base.900', 'base.50')(props),
         svg: {
-          fill: `base.100`,
+          fill: mode(`base.800`, `base.100`)(props),
         },
       },
     },
   };
 });
 
-const appTabsTabpanel = defineStyle(() => ({
+const appTabsTabpanel = defineStyle((_props) => ({
   padding: 0,
   height: '100%',
 }));
 
 const appTabs = definePartsStyle((props) => ({
-  root: appTabsRoot(),
-  tab: appTabsTab(),
+  root: appTabsRoot(props),
+  tab: appTabsTab(props),
   tablist: appTabsTablist(props),
-  tabpanel: appTabsTabpanel(),
+  tabpanel: appTabsTabpanel(props),
 }));
 
-const line = definePartsStyle(() => ({
+const line = definePartsStyle((props) => ({
   tab: {
     borderTopRadius: 'base',
     px: 4,
     py: 1,
     fontSize: 'sm',
-    color: 'base.400',
+    color: mode('base.600', 'base.400')(props),
     fontWeight: 500,
     _selected: {
-      color: 'accent.400',
+      color: mode('accent.600', 'accent.400')(props),
     },
   },
   tabpanel: {

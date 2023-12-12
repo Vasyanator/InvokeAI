@@ -86,7 +86,10 @@ export default function ParamBoundingBoxSize() {
         borderRadius: 4,
         flexDirection: 'column',
         w: 'full',
-        bg: 'base.750',
+        bg: 'base.100',
+        _dark: {
+          bg: 'base.750',
+        },
       }}
     >
       <IAIInformationalPopover feature="paramRatio">

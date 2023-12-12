@@ -40,7 +40,8 @@ const ImageUploadOverlay = (props: ImageUploadOverlayProps) => {
           insetInlineStart: 0,
           w: 'full',
           h: 'full',
-          bg: 'base.900',
+          bg: 'base.700',
+          _dark: { bg: 'base.900' },
           opacity: 0.7,
           alignItems: 'center',
           justifyContent: 'center',
@@ -72,7 +73,8 @@ const ImageUploadOverlay = (props: ImageUploadOverlayProps) => {
             borderRadius: 'xl',
             borderStyle: 'dashed',
             color: 'base.100',
-            borderColor: 'base.200',
+            borderColor: 'base.100',
+            _dark: { borderColor: 'base.200' },
           }}
         >
           {isDragAccept ? (

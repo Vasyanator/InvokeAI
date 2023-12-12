@@ -65,7 +65,11 @@ const IAICollapse = (props: IAIToggleCollapseProps) => {
                 transition: { duration: 0.1 },
               }}
             >
-              <Text sx={{ color: 'accent.300' }}>{activeLabel}</Text>
+              <Text
+                sx={{ color: 'accent.500', _dark: { color: 'accent.300' } }}
+              >
+                {activeLabel}
+              </Text>
             </motion.div>
           )}
         </AnimatePresence>
@@ -86,7 +90,10 @@ const IAICollapse = (props: IAIToggleCollapseProps) => {
             p: 4,
             pb: 4,
             borderBottomRadius: 'base',
-            bg: 'base.800',
+            bg: 'base.150',
+            _dark: {
+              bg: 'base.800',
+            },
           }}
         >
           {children}

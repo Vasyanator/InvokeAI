@@ -1,4 +1,9 @@
-import { Box, ChakraProps, useToken } from '@chakra-ui/react';
+import {
+  Box,
+  ChakraProps,
+  useColorModeValue,
+  useToken,
+} from '@chakra-ui/react';
 import { createMemoizedSelector } from 'app/store/createMemoizedSelector';
 import { stateSelector } from 'app/store/store';
 import { useAppDispatch, useAppSelector } from 'app/store/storeHooks';
@@ -43,13 +48,20 @@ const NodeWrapper = (props: NodeWrapperProps) => {
 
   const isInProgress = useAppSelector(selectIsInProgress);
 
-  const [nodeInProgress, shadowsXl, shadowsBase] = useToken('shadows', [
-    'nodeInProgress',
-    'shadows.xl',
-    'shadows.base',
-  ]);
+  const [nodeInProgressLight, nodeInProgressDark, shadowsXl, shadowsBase] =
+    useToken('shadows', [
+      'nodeInProgress.light',
+      'nodeInProgress.dark',
+      'shadows.xl',
+      'shadows.base',
+    ]);
 
   const dispatch = useAppDispatch();
+
+  const inProgressShadow = useColorModeValue(
+    nodeInProgressLight,
+    nodeInProgressDark
+  );
 
   const opacity = useAppSelector((state) => state.nodes.nodeOpacity);
 
@@ -105,7 +117,7 @@ const NodeWrapper = (props: NodeWrapperProps) => {
           transitionProperty: 'common',
           transitionDuration: '0.1s',
           opacity: 0.7,
-          shadow: isInProgress ? nodeInProgress : undefined,
+          shadow: isInProgress ? inProgressShadow : undefined,
           zIndex: -1,
         }}
       />
