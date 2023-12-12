@@ -1,6 +1,6 @@
 export type SliderProps = {
   /**
-   * The value (controlled)
+   * The value
    */
   value: number;
   /**
@@ -24,21 +24,13 @@ export type SliderProps = {
    */
   onChange: (v: number) => void;
   /**
-   * The reset handler
+   * The reset handler, called on double-click of the thumb
    */
   onReset?: () => void;
   /**
    * The value formatter
    */
   formatValue?: (v: number) => string;
-  /**
-   * The minimum value for the input field
-   */
-  inputMin?: number;
-  /**
-   * The maximum value for the input field
-   */
-  inputMax?: number;
   /**
    * Whether the slider is disabled
    */
@@ -50,7 +42,7 @@ export type SliderProps = {
   /**
    * Whether to show a tooltip over the slider thumb
    */
-  withTooltip?: boolean;
+  withThumbTooltip?: boolean;
 };
 
 export type FormattedMark = { value: number; label: string };

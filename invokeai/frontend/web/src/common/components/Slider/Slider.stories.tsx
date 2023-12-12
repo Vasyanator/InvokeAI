@@ -19,11 +19,6 @@ type Story = StoryObj<typeof Slider>;
 
 const Component = (props: Parameters<typeof Slider>[0]) => {
   const [value, setValue] = useState(0);
-  return <Slider {...props} value={value} onChange={setValue} />;
-};
-
-const ComponentWithReset = (props: Parameters<typeof Slider>[0]) => {
-  const [value, setValue] = useState(0);
   const onReset = useCallback(() => {
     setValue(0);
   }, []);
@@ -32,39 +27,11 @@ const ComponentWithReset = (props: Parameters<typeof Slider>[0]) => {
   );
 };
 
-export const WithTooltip: Story = {
-  render: Component,
-  args: {
-    withTooltip: true,
-  },
-};
-
-export const WithFormattedValues: Story = {
-  render: Component,
-  args: {
-    withTooltip: true,
-    formatValue: (v: number) => `${v} eggs`,
-  },
-};
-
-export const WithReset: Story = {
-  render: ComponentWithReset,
-};
-
-export const FloatValue: Story = {
-  render: Component,
-  args: {
-    min: 0,
-    max: 1,
-    step: 0.1,
-    marks: [0, 0.5, 1],
-  },
-};
-
-export const WithFineStep: Story = {
-  name: 'With Fine Step (hold shift)',
+export const Default: Story = {
   render: Component,
   args: {
     fineStep: 0.1,
+    withThumbTooltip: true,
+    formatValue: (v: number) => `${v} eggs`,
   },
 };

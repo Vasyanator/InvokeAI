@@ -7,7 +7,7 @@ const meta: Meta<typeof NumberInput> = {
   tags: ['autodocs'],
   component: NumberInput,
   args: {
-    min: 0,
+    min: -10,
     max: 10,
     step: 1,
   },
@@ -23,21 +23,9 @@ const Component = (props: Parameters<typeof NumberInput>[0]) => {
 
 export const Default: Story = {
   render: Component,
+  args: { fineStep: 0.1 },
 };
 
-export const FloatValue: Story = {
+export const Integer: Story = {
   render: Component,
-  args: {
-    min: 0,
-    max: 1,
-    step: 0.1,
-  },
-};
-
-export const WithFineStep: Story = {
-  name: 'With Fine Step (hold shift)',
-  render: Component,
-  args: {
-    fineStep: 0.1,
-  },
 };

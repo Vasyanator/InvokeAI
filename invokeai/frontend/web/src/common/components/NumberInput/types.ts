@@ -1,6 +1,4 @@
-import { NumberInputProps as ChakraNumberInputProps } from '@chakra-ui/react';
-
-export type NumberInputProps = Omit<ChakraNumberInputProps, 'onChange'> & {
+export type NumberInputProps = {
   /**
    * The value
    */

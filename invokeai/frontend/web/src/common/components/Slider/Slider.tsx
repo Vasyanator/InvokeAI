@@ -3,6 +3,7 @@ import {
   SliderFilledTrack as ChakraSliderFilledTrack,
   SliderThumb as ChakraSliderThumb,
   SliderTrack as ChakraSliderTrack,
+  forwardRef,
 } from '@chakra-ui/react';
 import { useStore } from '@nanostores/react';
 import SliderMark from 'common/components/Slider/SliderMark';
@@ -12,7 +13,7 @@ import { $modifiers } from 'common/hooks/useGlobalModifiers';
 import { AnimatePresence } from 'framer-motion';
 import { memo, useCallback, useMemo, useState } from 'react';
 
-const Slider = (props: SliderProps) => {
+const Slider = forwardRef((props: SliderProps, ref) => {
   const {
     value,
     min,
@@ -23,10 +24,8 @@ const Slider = (props: SliderProps) => {
     onReset,
     formatValue = (v: number) => v.toString(),
     marks: _marks,
-    inputMin: _inputMin,
-    inputMax: _inputMax,
     isDisabled = false,
-    withTooltip = false,
+    withThumbTooltip: withTooltip = false,
   } = props;
   const [isMouseOverSlider, setIsMouseOverSlider] = useState(false);
   const [isChanging, setIsChanging] = useState(false);
@@ -50,6 +49,7 @@ const Slider = (props: SliderProps) => {
   );
   return (
     <ChakraSlider
+      ref={ref}
       value={value}
       min={min}
       max={max}
@@ -88,6 +88,6 @@ const Slider = (props: SliderProps) => {
       </Tooltip>
     </ChakraSlider>
   );
-};
+});
 
 export default memo(Slider);
